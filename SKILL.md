@@ -38,13 +38,14 @@ The `platform` parameter is required on every call ("ios" or "web").
 2. Resolve the target platform.
 3. Break the goal into concrete UI moments (specific screens a user would see).
 4. Generate 3-7 search queries using the query construction rules below.
-5. Call `search_screens` for each query (use `mode: "deep"` by default).
-6. Visually examine the returned screenshots and read the metadata.
-7. Cluster findings by recurring UI patterns.
-8. Synthesize what the patterns mean for product design.
-9. Return actionable recommendations using the output format below.
+5. Run searches in batches of 2-3 and **analyze each batch immediately** — write down app names, URLs, and key observations as text before moving to the next batch. Screenshots are large and will be dropped from context if you accumulate too many before synthesizing.
+6. After all batches are analyzed, merge the per-batch notes into pattern clusters.
+7. Synthesize what the patterns mean for product design.
+8. Return actionable recommendations using the output format below.
 
 For broad research, use `limit: 20-30`. For focused queries, `limit: 10-15` is sufficient. If the user wants more variety after an initial batch, pass prior result IDs via `exclude_screen_ids` to get fresh results.
+
+**Important: analyze incrementally.** Do not accumulate all search results before writing. Each batch of screenshots consumes significant context. Write your visual analysis (app names, URLs, layout observations, component notes) as text immediately after each batch returns. Text persists through context compaction; base64 images do not.
 
 ## Query Construction
 
