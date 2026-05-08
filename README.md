@@ -55,7 +55,36 @@ The skill automatically:
 <details id="setup-mobbin-mcp">
 <summary><strong>Setup Mobbin MCP</strong></summary>
 
-Go to **Settings** in your editor, click **MCP**, and select Mobbin from the list. You'll see setup instructions there.
+1. Sign up at [mobbin.com](https://mobbin.com)
+2. Click your profile icon (top right) → **Settings** → **MCP**
+3. Select your tool and follow the instructions, or use one of these:
+
+**Claude Code:**
+```bash
+claude mcp add mobbin \
+  --transport http https://api.mobbin.com/mcp
+```
+
+**Cursor:**
+```json
+{
+  "mcpServers": {
+    "mobbin": {
+      "serverUrl": "https://api.mobbin.com/mcp"
+    }
+  }
+}
+```
+
+**Codex:**
+```bash
+codex mcp add mobbin --url https://api.mobbin.com/mcp
+```
+
+**Lovable:**
+```
+https://api.mobbin.com/mcp
+```
 
 </details>
 
