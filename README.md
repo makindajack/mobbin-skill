@@ -55,31 +55,7 @@ The skill automatically:
 <details id="setup-mobbin-mcp">
 <summary><strong>Setup Mobbin MCP</strong></summary>
 
-### 1. Get your API key
-
-Sign up at [mobbin.com](https://mobbin.com) and grab your API key from account settings.
-
-### 2. Connect
-
-**Claude Code:**
-```bash
-claude mcp add mobbin -- npx -y @anthropic-ai/mobbin-mcp-server
-```
-
-**Cursor / Windsurf** — add to your MCP config:
-```json
-{
-  "mcpServers": {
-    "mobbin": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mobbin-mcp-server"],
-      "env": {
-        "MOBBIN_API_KEY": "your_key"
-      }
-    }
-  }
-}
-```
+Go to **Settings** in your editor, click **MCP**, and select Mobbin from the list. You'll see setup instructions there.
 
 </details>
 
