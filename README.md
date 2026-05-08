@@ -1,6 +1,8 @@
 # Mobbin UI Research Skill
 
-A Claude Code skill that turns [Mobbin](https://mobbin.com)'s 300K+ screen library into structured UI research. Give it a research goal — it searches Mobbin, visually analyzes the screenshots, and returns pattern clusters, design system components, or competitive comparisons.
+Turn [Mobbin](https://mobbin.com)'s 300K+ screen library into structured UI research. Give your agent a research goal — it searches Mobbin, visually analyzes the screenshots, and returns pattern clusters, design system components, or competitive comparisons.
+
+Works with Claude Code, Cursor, Gemini CLI, Lovable, and any MCP-compatible agent.
 
 ## What it does
 
@@ -14,15 +16,9 @@ A Claude Code skill that turns [Mobbin](https://mobbin.com)'s 300K+ screen libra
 
 Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first.
 
-### Claude Code
-
 ```bash
-claude skill add --url https://github.com/ddruids/mobbin-skill
+npx skills add https://github.com/ddruids/mobbin-skill
 ```
-
-### Cursor / Windsurf
-
-Copy the `SKILL.md` and `references/` folder into your project's `.cursor/skills/` or equivalent directory.
 
 ## Usage
 
