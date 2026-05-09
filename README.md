@@ -14,7 +14,7 @@ Works with Claude Code, Cursor, Gemini CLI, Lovable, and any MCP-compatible agen
 
 ## Install
 
-Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first.
+Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first. Copy and Paste in Terminal to install skill
 
 ```bash
 npx skills add https://github.com/ddruids/mobbin-skill
