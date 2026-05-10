@@ -14,11 +14,13 @@ Help the user research UI patterns using Mobbin MCP. Mobbin exposes one tool:
 Translate abstract product or UX goals into concrete screen descriptions before calling `search_screens`. Describe what is visible on the screen, not abstract UX concepts.
 
 Do not search:
+
 - "trust patterns"
 - "good onboarding"
 - "transaction confidence"
 
 Search:
+
 - "signup screen with progress indicator, phone number input, security message, and continue button"
 - "bank transfer pending screen showing amount, recipient, estimated arrival time, and progress indicator"
 - "dashboard empty state with illustration, explanatory text, and primary call to action"
@@ -27,10 +29,21 @@ Search:
 
 The `platform` parameter is required on every call ("ios" or "web").
 
-1. **Explicit**: User says "mobile app", "iOS", "iPhone" -> `ios`. User says "website", "web app", "SaaS", "desktop" -> `web`.
-2. **Inferrable**: If the user names a product that is clearly one platform (e.g., "Stripe dashboard" -> web, "Duolingo onboarding" -> ios), infer it.
-3. **Ambiguous**: If unclear, ask: "Should I search iOS apps, web apps, or both?"
-4. **Both**: For cross-platform comparison, run separate searches per platform and note which results come from which in the synthesis.
+**Default behavior: infer and disclose, do not block on a question.** A round-trip question on every call is friction. Pick the most likely platform from the cues below and tell the user which one you chose in a single line, e.g.:
+
+> _Searching iOS (say "web" if you meant web apps)._
+
+Then continue with the search immediately.
+
+1. **Explicit**: User says "mobile app", "iOS", "iPhone", "Android" → `ios`. User says "website", "web app", "SaaS", "desktop", "browser" → `web`. No disclosure needed.
+2. **Inferrable from product name**: If the user names a product that is clearly one platform (e.g., "Stripe dashboard" → web, "Duolingo onboarding" → ios, "Notion" → web, "Cash App" → ios), infer silently.
+3. **Inferrable from category**: If the category strongly implies a platform, infer with a one-line disclosure. Defaults:
+   - Consumer/mobile-first categories (banking, crypto wallet, social, fitness, dating, messaging, ride-share, delivery) → **ios**
+   - Productivity/B2B/dashboard categories (SaaS dashboard, CRM, analytics, admin, dev tools, design tools) → **web**
+4. **Truly ambiguous**: Only ask when both platforms are equally plausible AND the answer would meaningfully change the result (e.g., "research checkout flows" with no other context). Prefer running both in parallel over asking.
+5. **Both**: For cross-platform comparison, run separate searches per platform and note which results come from which in the synthesis.
+
+The user can always correct you in the next turn — that's cheaper than a blocking question on the first turn.
 
 ## Workflow
 
@@ -120,12 +133,15 @@ If the user asks for a competitive comparison or product decision log, see the t
 When the user asks about **design system components**, **common components**, **UI kit**, or **component library** for a product category, shift the output from screen-level patterns to **atomic UI primitives**.
 
 ### Detection
+
 Trigger this mode when the request includes phrases like: "design system", "component library", "common components", "UI kit", "what components do I need", "atoms", "primitives", "building blocks".
 
 ### How to analyze
+
 After running searches, do NOT cluster by screen type (e.g., "Home Screen Pattern", "Swap Screen Pattern"). Instead, decompose each screen into its **individual reusable UI elements** — the atoms and molecules that appear across multiple screens and apps.
 
 For each component, identify:
+
 - **What it is**: A single, named primitive (e.g., "Token Icon", not "Portfolio Dashboard")
 - **Variants**: Size, state, or style variations observed across apps
 - **Where it appears**: Which screens and apps use it (with Mobbin URLs)
@@ -154,6 +170,7 @@ List components that exist in any design system but need product-specific adapta
 ```
 
 ### Key distinction
+
 - **Screen pattern** (wrong): "Send Transaction Screen — shows amount, address, fee, and confirm button"
 - **Primitives** (right): `Truncated Address`, `Currency Display`, `Fee Breakdown Row`, `Slide-to-Confirm`, `Numeric Keypad` — each as independent, reusable atoms
 
