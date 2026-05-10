@@ -1,5 +1,13 @@
 # Mobbin UI Research Skill
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Powered by Mobbin MCP](https://img.shields.io/badge/Powered%20by-Mobbin%20MCP-7c3aed)](https://mobbin.com)
+[![Model Context Protocol](https://img.shields.io/badge/MCP-Compatible-1f2937?logo=anthropic&logoColor=white)](https://modelcontextprotocol.io)
+[![Works with Claude Code](https://img.shields.io/badge/Claude%20Code-supported-d97706?logo=anthropic&logoColor=white)](https://www.anthropic.com/claude-code)
+[![Works with Cursor](https://img.shields.io/badge/Cursor-supported-000000?logo=cursor&logoColor=white)](https://cursor.com)
+[![Works with VS Code Copilot](https://img.shields.io/badge/VS%20Code%20Copilot-supported-007ACC?logo=githubcopilot&logoColor=white)](https://code.visualstudio.com/docs/copilot/overview)
+[![GitHub stars](https://img.shields.io/github/stars/makindajack/mobbin-skill?style=social)](https://github.com/makindajack/mobbin-skill)
+
 Turn [Mobbin](https://mobbin.com)'s 300K+ screen library into structured UI research. Give your agent a research goal — it searches Mobbin, visually analyzes the screenshots, and returns pattern clusters, design system components, or competitive comparisons.
 
 Works with Claude Code, Cursor, Gemini CLI, Lovable, and any MCP-compatible agent.
@@ -166,6 +174,13 @@ https://api.mobbin.com/mcp
 ```
 
 </details>
+
+## Credits
+
+- Original skill by **[ddruids/mobbin-skill](https://github.com/ddruids/mobbin-skill)** — the foundation this fork builds on.
+- Maintained in this fork by **[@makindajack](https://github.com/makindajack)** with UX improvements, mode-aware workflow, prompt templates, examples, and cost guidance.
+- Powered by the [Mobbin MCP server](https://mobbin.com) and the [Model Context Protocol](https://modelcontextprotocol.io).
+- Contributions welcome — open an issue using the templates in `.github/ISSUE_TEMPLATE/`.
 
 ## License
 

@@ -18,6 +18,11 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - **Cost & context use** section in `README.md` with a mode/limit/payload table and `exclude_screen_ids` example.
 - `.gitignore` to keep local working notes (`TODO.md`, `.DS_Store`) out of the repo.
 - `CHANGELOG.md`, GitHub issue templates.
+- **Plan-tier callout** in `README.md` Setup section: free vs Pro/Team Mobbin tiers and the note that Mobbin sets the actual quotas.
+- **`exclude_screen_ids` copy-paste example** in `references/query-patterns.md` Multi-Batch Research subsection.
+- **"Don't do this"** section in `references/query-patterns.md` with 3 bad → fixed query pairs and an anti-pattern checklist.
+- **Badges** at the top of `README.md` (MIT, Mobbin MCP, MCP-compatible, Claude Code, Cursor, VS Code Copilot, GitHub stars).
+- **Credits** section in `README.md` attributing the original `ddruids/mobbin-skill` repo and this fork's maintainer.
 
 ### Changed
 
