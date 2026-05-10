@@ -11,7 +11,9 @@ Each query should describe what a person would see on screen. Maximum 500 charac
 ## Platform-Specific Guidance
 
 ### iOS Queries
+
 iOS apps use mobile-native patterns. Include these when relevant:
+
 - Bottom sheets, action sheets, half-modals
 - Tab bar navigation, swipe gestures
 - Pull-to-refresh, floating action buttons
@@ -19,7 +21,9 @@ iOS apps use mobile-native patterns. Include these when relevant:
 - Full-screen takeovers for onboarding
 
 ### Web Queries
+
 Web apps use browser-native patterns. Include these when relevant:
+
 - Sidebar navigation, top navigation bar, breadcrumbs
 - Modals, drawers, popovers, dropdown menus
 - Multi-column layouts, data tables, dashboards
@@ -29,6 +33,7 @@ Web apps use browser-native patterns. Include these when relevant:
 ## Example Queries by Goal
 
 ### Onboarding
+
 - "fintech signup screen with phone number input progress indicator security message and continue button"
 - "AI app onboarding screen asking user goal with selectable cards and continue button"
 - "AI chat welcome screen with suggested prompts and empty conversation state"
@@ -36,41 +41,49 @@ Web apps use browser-native patterns. Include these when relevant:
 - "SaaS onboarding checklist with completed and pending steps progress bar and skip option"
 
 ### Empty States
+
 - "SaaS dashboard empty state with illustration explanatory text primary CTA and secondary link"
 - "inbox empty state with illustration and suggested actions"
 - "search results empty state with alternative suggestions and filters"
 
 ### Error States
+
 - "payment failed screen with error message retry button support link and transaction details"
 - "network error screen with retry button offline indicator and cached content"
 - "form validation error state with inline error messages and highlighted fields"
 
 ### Progress and Pending States
+
 - "transfer pending screen with amount recipient estimated arrival time progress tracker and help link"
 - "file upload progress screen with progress bar cancel button and file details"
 - "order tracking screen with timeline status steps estimated delivery and contact support"
 
 ### Confirmation Screens
+
 - "crypto withdrawal confirmation screen with recipient address network fee warning text and confirm button"
 - "money transfer confirmation screen with fee breakdown recipient details and confirm button"
 - "subscription upgrade confirmation with plan comparison price change and billing date"
 
 ### Success States
+
 - "payment success screen with receipt transaction ID and share button"
 - "account created success screen with next steps checklist and primary CTA"
 - "transfer completed screen with transaction summary download receipt and done button"
 
 ### Settings
+
 - "notification settings screen with grouped toggles channels frequency controls and save button"
 - "privacy settings screen with data sharing toggles delete account option and explanation text"
 - "security settings screen showing recovery phrase backup option and warning banner"
 
 ### Wallet and Crypto
+
 - "crypto wallet seed phrase backup screen with warning text and continue button"
 - "wallet recovery phrase confirmation screen with numbered words and validation error"
 - "crypto portfolio dashboard with token balances price charts and send receive buttons"
 
 ### Fintech Transfers
+
 - "bank transfer pending screen showing amount recipient estimated arrival time and progress status"
 - "international transfer screen with exchange rate fee breakdown and delivery estimate"
 - "recurring payment setup screen with frequency amount date and recipient fields"
@@ -121,11 +134,11 @@ This avoids re-fetching the same screens (saving context + tokens) and forces th
 
 The most common reason `search_screens` returns weak results is an abstract, jargon-heavy query. Always rewrite into concrete visual language before calling.
 
-| ❌ Bad query | ✅ Fixed query |
-|---|---|
-| `"good onboarding for crypto apps"` | `"crypto wallet welcome screen with seed-phrase backup CTA, biometric setup option, and skip link"` |
-| `"trust patterns for fintech transfers"` | `"fintech transfer confirmation screen with itemized fee breakdown, recipient summary card, and confirm button"` |
-| `"a really clean SaaS dashboard"` | `"web SaaS analytics dashboard with sidebar navigation, KPI cards, line chart, data table, and date-range filter"` |
+| ❌ Bad query                             | ✅ Fixed query                                                                                                     |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `"good onboarding for crypto apps"`      | `"crypto wallet welcome screen with seed-phrase backup CTA, biometric setup option, and skip link"`                |
+| `"trust patterns for fintech transfers"` | `"fintech transfer confirmation screen with itemized fee breakdown, recipient summary card, and confirm button"`   |
+| `"a really clean SaaS dashboard"`        | `"web SaaS analytics dashboard with sidebar navigation, KPI cards, line chart, data table, and date-range filter"` |
 
 Anti-patterns to avoid:
 
@@ -133,4 +146,3 @@ Anti-patterns to avoid:
 - **Product theory** ("trust", "conversion", "engagement", "retention") — these are outcomes, not visible UI elements.
 - **Stacking 4+ niche concepts** ("rejection screen with personalized counter-offer and soft-credit-pull explainer") — split into two queries instead. See `examples/05-recovery-from-bad-query.md`.
 - **Naming a single screen type with no components** ("a settings screen") — too broad; add 2–3 visible elements to focus the search.
-
