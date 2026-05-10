@@ -42,10 +42,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --no-progress
-            --max-concurrency 4
-            --exclude-path node_modules
-            --exclude-path clients/copilot/mobbin.prompt.md
+            --config lychee.toml
             './**/*.md'
           fail: true
         env:

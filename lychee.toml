@@ -1,0 +1,23 @@
+# Lychee link-check config
+# Docs: https://lychee.cli.rs/usage/config/
+
+# Files / globs to skip
+exclude_path = [
+  "node_modules",
+  "clients/copilot/mobbin.prompt.md",
+]
+
+# URL patterns to skip (regex). Reasons inline.
+exclude = [
+  # Placeholder used in skill examples — never resolves.
+  "^https?://mobbin\\.com/screens/\\.\\.\\.",
+  # GitHub "new issue" links require a signed-in session; anon = 404.
+  "^https?://github\\.com/.+/issues/new(\\?|$)",
+]
+
+# Accept 200/204 (default) plus typical "ok but blocked for anon" codes.
+accept = ["200", "204", "206", "301", "302", "401", "403", "429"]
+
+# Be polite to remote hosts.
+max_concurrency = 4
+no_progress = true

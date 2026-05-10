@@ -104,7 +104,7 @@ Delete or rename the duplicates so only one starts with `mobbin`. The canonical 
 
 ## Something else?
 
-Open a [bug report](https://github.com/makindajack/mobbin-skill/issues/new?template=bug.yml) with:
+Open a [bug report](https://github.com/makindajack/mobbin-skill/issues/new?template=bug_report.yml) with:
 
 - Your client + version (e.g., `claude --version`, `copilot --version`).
 - The exact prompt you used.
