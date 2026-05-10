@@ -7,27 +7,35 @@ Analyze Mobbin results through these lenses, then structure output using the app
 ## Part 1: Analysis Lenses
 
 ### 1. Screen Moment
+
 What part of the user journey is this? (First launch, onboarding, core task, settings, error recovery, etc.)
 
 ### 2. User Job
+
 What is the user trying to accomplish at this moment? What triggered them to be on this screen?
 
 ### 3. Information Hierarchy
+
 What appears first, second, and last? What gets the most visual weight? What is the reading order?
 
 ### 4. Trust Mechanism
+
 How does the interface reduce uncertainty or anxiety? Look for: security messages, fee breakdowns, confirmation checklists, familiar brand cues, social proof, progress indicators.
 
 ### 5. Action Model
+
 What is the primary CTA? What is secondary? Is there a destructive action, and how is it visually separated? How many actions compete for attention?
 
 ### 6. Progressive Disclosure
+
 What is hidden until needed? Look for: expandable sections, "learn more" links, advanced settings behind toggles, tooltips, info icons.
 
 ### 7. Recovery
+
 What happens when the user is blocked, makes an error, or wants to go back? Look for: error states, undo options, back buttons, help links, retry mechanisms.
 
 ### 8. Reusable Pattern
+
 What specific UI pattern could be extracted and applied to the user's product? Name it concretely (e.g., "inline fee breakdown with expandable details" not "good transparency").
 
 ---
@@ -38,7 +46,7 @@ Choose the template that best fits the user's research goal.
 
 ### Template A: Research Summary (default)
 
-Use when the user wants to understand patterns across a category or flow type.
+Use when the user wants to understand patterns across a category or flow type. Lead with the screen comparison table so the user can scan before reading prose.
 
 ```
 # Mobbin Research Summary
@@ -49,8 +57,16 @@ Briefly restate the goal.
 ## Searches Used
 List the concrete Mobbin queries used and platform(s) searched.
 
+## Screens Reviewed
+
+| App | Pattern | Notable detail | Link |
+|-----|---------|----------------|------|
+| ... | ...     | ...            | [Mobbin](url) |
+
+One row per screen referenced. Every row MUST have a Mobbin link.
+
 ## Pattern Clusters
-Group findings into recurring UI patterns. Attribute each to specific apps.
+Group the rows above into 2–5 recurring UI patterns. Attribute each to specific apps (linked).
 
 ## Key Observations
 Explain what the screens reveal about product design thinking.

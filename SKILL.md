@@ -133,6 +133,8 @@ For each useful result, analyze through these lenses (full detail in `references
 
 ## Output Format
 
+Lead with a **screen comparison table** so the user can scan results before reading prose. Then layer the synthesis on top.
+
 Use this structure by default:
 
 ```
@@ -144,8 +146,18 @@ Briefly restate the goal.
 ## Searches Used
 List the concrete Mobbin queries used and platform(s) searched.
 
+## Screens Reviewed
+
+| App | Pattern | Notable detail | Link |
+|-----|---------|----------------|------|
+| Chime | 3-step icon stepper signup | Legal disclosure inline with CTA | [Mobbin](https://mobbin.com/screens/...) |
+| Fi    | Phone-first with custom keypad | Helper copy explains why phone is needed | [Mobbin](https://mobbin.com/screens/...) |
+| ...   | ...                              | ...                                       | ...      |
+
+One row per screen referenced in the synthesis. Every row MUST have a Mobbin link. Keep `Notable detail` to one short phrase.
+
 ## Pattern Clusters
-Group findings into recurring UI patterns. Every app reference MUST be a markdown link to its Mobbin screen URL.
+Group the rows above into 2–5 recurring UI patterns. Each cluster names the pattern and lists the apps in it (linked).
 
 ## Key Observations
 Explain what the screens reveal about product design thinking.
