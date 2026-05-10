@@ -70,18 +70,8 @@ If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://g
 
 ## Credits
 
-- Original skill by **[ddruids/mobbin-skill](https://github.com/ddruids/mobbin-skill)** — the foundation this fork builds on.
-- Maintained in this fork by **[@makindajack](https://github.com/makindajack)**. Additions on top of the original:
-  - **Mode-aware workflow** (Mode A discovery vs Mode B deep-dive) with cost-conscious defaults.
-  - **11-CLI compatibility matrix** and per-client install paths (Claude Code, Cursor, Codex, Gemini, Cline, Goose, Copilot CLI, VS Code Copilot, Lovable, plus warnings for non-MCP tools).
-  - **VS Code Copilot prompt** (`/mobbin`) and Copilot CLI MCP wiring.
-  - **`docs/` split** — install, MCP setup, quick-start, compatibility, cost & context, responsible use, troubleshooting (6 common failure modes with fixes).
-  - **Reusable prompt templates** and worked examples for fintech, crypto, and design-system research.
-  - **Cost & context guidance** — payload-size table, image-handling tips, screen-id exclusion patterns.
-  - **Responsible-use notes** aligned with Mobbin ToS (no account-sharing, bulk download, derivative works).
-  - **`validate.sh --doctor`** — offline environment health check (MCP host CLIs, Mobbin wiring, endpoint reachability, skill install).
-  - **CI hardening** — `shellcheck` + `gitleaks` (security) and `markdownlint` + `lychee` link-check (docs).
-  - **`SECURITY.md`** with private vulnerability reporting via GitHub Security Advisories.
+- Original skill by **[ddruids/mobbin-skill](https://github.com/ddruids/mobbin-skill)**.
+- Fork maintained by **[@makindajack](https://github.com/makindajack)** — see [`CHANGELOG.md`](CHANGELOG.md) for what's been added.
 - Powered by the [Mobbin MCP server](https://mobbin.com) and the [Model Context Protocol](https://modelcontextprotocol.io).
 - Contributions welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
