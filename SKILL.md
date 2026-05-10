@@ -118,6 +118,17 @@ See `references/query-patterns.md` for the full formula and example catalog with
 - **Compare across results**: Look for recurring patterns, outliers, and platform-specific conventions.
 - **Progressive depth**: Start with the strongest 3-5 queries. If results are thin, expand with additional queries or broaden search terms.
 
+### Fallback rule for weak results
+
+If a search returns **fewer than 3 results that are clearly relevant** to the user's intent (off-topic apps, wrong screen type, or very few hits):
+
+1. **Auto-broaden once before reporting back.** Strip the most specific term from the query — usually the named component or state — and rerun.
+   - Example: `"iOS fintech onboarding signup screen with phone number input progress indicator security message and continue button"` → drop `"security message"` and `"progress indicator"` → `"iOS fintech onboarding signup screen with phone number input and continue button"`.
+2. If still <3 relevant results, **switch `mode` from `"deep"` to `"fast"`** (or vice versa) and try once more — the two pipelines surface different results.
+3. If still thin, **stop and report honestly**: tell the user the query returned limited results, show what you did find, and suggest 2 alternative phrasings they could try (use templates from `references/prompt-templates.md`).
+
+Do not pad output with weak results to look thorough. Three strong references beat ten loosely-related ones.
+
 ## Analysis Framework
 
 For each useful result, analyze through these lenses (full detail in `references/synthesis-framework.md`):
