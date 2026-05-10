@@ -3,6 +3,20 @@
 All notable changes to this skill are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.1] — 2026-05-10
+
+### Added
+
+- **`validate.sh`** — sanity script that runs a known Mode A query through `claude` CLI and greps the output for required elements (table header, Mobbin link, escalation offer).
+- **`clients/`** — pre-configured drop-in files: `clients/claude/skills/mobbin/SKILL.md` (symlink to root) and `clients/cursor/mobbin.mdc` (with required `.mdc` frontmatter pre-filled). Removes the manual file-conversion step.
+- **`references/anti-patterns.md`** — catalog of skill behavior failure modes (padding weak results, asking for platform on every call, stacking everything into one Mode B call, ignoring `exclude_screen_ids`, treating Mobbin as generic image search, summarizing without linking) with symptom → cause → fix.
+- **"Why this fork?"** subsection in `README.md` explaining what this fork adds vs upstream `ddruids/mobbin-skill`.
+
+### Changed
+
+- **README install table** Claude Code and Cursor rows now point to the new `clients/` files so users can copy/symlink directly without manual conversion.
+- **README "What's inside"** table extended with `references/anti-patterns.md`, `clients/`, and `validate.sh`.
+
 ## [1.0.0] — 2026-05-10
 
 First release of this fork. Includes the original skill from upstream `ddruids/mobbin-skill` (core `SKILL.md`, `references/query-patterns.md`, `references/synthesis-framework.md`) plus the additions and changes below.

@@ -12,6 +12,21 @@ Turn [Mobbin](https://mobbin.com)'s 300K+ screen library into structured UI rese
 
 Works with Claude Code, Cursor, Gemini CLI, Lovable, and any MCP-compatible agent.
 
+## Why this fork?
+
+This is a fork of [`ddruids/mobbin-skill`](https://github.com/ddruids/mobbin-skill) with the following additions:
+
+- **Mode A / Mode B split** — a fast single-call lookup mode for "show me…" prompts, separate from the original multi-batch research mode.
+- **Prompt templates** for 5 common use cases plus a slot cheatsheet (`references/prompt-templates.md`).
+- **Examples folder** with 5 real input → output transcripts.
+- **Cost & context guidance** — mode/limit/payload table, `exclude_screen_ids` pattern, `image_format: webp` default.
+- **Fallback rule** for weak results: auto-broaden → swap mode → honest report instead of padding output.
+- **Behavior anti-patterns** catalog (`references/anti-patterns.md`).
+- **Pre-configured client files** for Claude Code and Cursor (`clients/`).
+- **`validate.sh`** sanity check + `CONTRIBUTING.md` + GitHub issue templates + Mobbin-ToS responsible-use guidance.
+
+If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://github.com/ddruids/mobbin-skill) instead.
+
 ## What it does
 
 - Translates abstract UX goals into concrete Mobbin search queries
@@ -26,15 +41,15 @@ Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first.
 
 The skill is just markdown — install it however your agent loads custom instructions.
 
-| Client                 | Install method                                                                                                                                                                                                                                            |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Claude Code**        | `npx skills add https://github.com/makindajack/mobbin-skill` <br>_or_ symlink the repo into `~/.claude/skills/` <br>_(install the upstream `ddruids/mobbin-skill` if you want the original without this fork's Mode A/B, prompt templates, and examples)_ |
-| **Cursor**             | Copy [`SKILL.md`](SKILL.md) into `.cursor/rules/mobbin.mdc` (project) or `~/.cursor/rules/` (global)                                                                                                                                                      |
-| **VS Code (Copilot)**  | Save [`SKILL.md`](SKILL.md) as `mobbin.prompt.md` in `~/Library/Application Support/Code/User/prompts/` (macOS)                                                                                                                                           |
-| **Codex CLI**          | Drop the repo into `~/.codex/skills/mobbin/`                                                                                                                                                                                                              |
-| **Gemini CLI**         | Reference [`SKILL.md`](SKILL.md) in your `GEMINI.md` system prompt                                                                                                                                                                                        |
-| **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                                                                                                                                                                      |
-| **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                                                                                                                                                                        |
+| Client                 | Install method                                                                                                                                                                                                                                                                   |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Claude Code**        | `npx skills add https://github.com/makindajack/mobbin-skill` <br>_or_ symlink `clients/claude/skills/mobbin/` into `~/.claude/skills/` <br>_(install the upstream `ddruids/mobbin-skill` if you want the original without this fork's Mode A/B, prompt templates, and examples)_ |
+| **Cursor**             | Copy [`clients/cursor/mobbin.mdc`](clients/cursor/mobbin.mdc) into `.cursor/rules/` (project) or `~/.cursor/rules/` (global) — frontmatter pre-filled                                                                                                                            |
+| **VS Code (Copilot)**  | Save [`SKILL.md`](SKILL.md) as `mobbin.prompt.md` in `~/Library/Application Support/Code/User/prompts/` (macOS)                                                                                                                                                                  |
+| **Codex CLI**          | Drop the repo into `~/.codex/skills/mobbin/`                                                                                                                                                                                                                                     |
+| **Gemini CLI**         | Reference [`SKILL.md`](SKILL.md) in your `GEMINI.md` system prompt                                                                                                                                                                                                               |
+| **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                                                                                                                                                                                             |
+| **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                                                                                                                                                                                               |
 
 > **Note:** `npx skills add` only works with agents that support the [skills CLI](https://github.com/anthropics/skills) — currently Claude Code. Other clients need a manual copy.
 
@@ -126,6 +141,9 @@ The skill automatically:
 | [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                |
 | [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                             |
 | [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log) |
+| [`references/anti-patterns.md`](references/anti-patterns.md)             | Behavior anti-patterns observed in real use — symptom → cause → fix                                    |
+| [`clients/`](clients/)                                                   | Pre-configured drop-in files for Claude Code and Cursor                                                |
+| [`validate.sh`](validate.sh)                                             | Sanity script — runs a known Mode A query and greps the output for required elements                   |
 
 ---
 
