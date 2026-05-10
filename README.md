@@ -26,15 +26,15 @@ Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first.
 
 The skill is just markdown — install it however your agent loads custom instructions.
 
-| Client                 | Install method                                                                                                  |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **Claude Code**        | `npx skills add https://github.com/ddruids/mobbin-skill` <br>_or_ symlink the repo into `~/.claude/skills/`     |
-| **Cursor**             | Copy [`SKILL.md`](SKILL.md) into `.cursor/rules/mobbin.mdc` (project) or `~/.cursor/rules/` (global)            |
-| **VS Code (Copilot)**  | Save [`SKILL.md`](SKILL.md) as `mobbin.prompt.md` in `~/Library/Application Support/Code/User/prompts/` (macOS) |
-| **Codex CLI**          | Drop the repo into `~/.codex/skills/mobbin/`                                                                    |
-| **Gemini CLI**         | Reference [`SKILL.md`](SKILL.md) in your `GEMINI.md` system prompt                                              |
-| **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                            |
-| **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                              |
+| Client                 | Install method                                                                                                                                                                                                                                            |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Claude Code**        | `npx skills add https://github.com/makindajack/mobbin-skill` <br>_or_ symlink the repo into `~/.claude/skills/` <br>_(install the upstream `ddruids/mobbin-skill` if you want the original without this fork's Mode A/B, prompt templates, and examples)_ |
+| **Cursor**             | Copy [`SKILL.md`](SKILL.md) into `.cursor/rules/mobbin.mdc` (project) or `~/.cursor/rules/` (global)                                                                                                                                                      |
+| **VS Code (Copilot)**  | Save [`SKILL.md`](SKILL.md) as `mobbin.prompt.md` in `~/Library/Application Support/Code/User/prompts/` (macOS)                                                                                                                                           |
+| **Codex CLI**          | Drop the repo into `~/.codex/skills/mobbin/`                                                                                                                                                                                                              |
+| **Gemini CLI**         | Reference [`SKILL.md`](SKILL.md) in your `GEMINI.md` system prompt                                                                                                                                                                                        |
+| **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                                                                                                                                                                      |
+| **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                                                                                                                                                                        |
 
 > **Note:** `npx skills add` only works with agents that support the [skills CLI](https://github.com/anthropics/skills) — currently Claude Code. Other clients need a manual copy.
 
@@ -48,7 +48,7 @@ After installing the skill and connecting Mobbin MCP, paste any of these prompts
 Show me 5 iOS fintech onboarding screens that use a phone number input and a progress indicator.
 ```
 
-**You'll get:** A short comparison table of 5 real apps (e.g., Chime, Fi, Afterpay) with linked Mobbin URLs and a one-line note on each layout.
+**You'll get:** A short comparison table of 5 real apps (e.g., apps like Chime, Fi, or Revolut — actual results vary per query) with linked Mobbin URLs and a one-line note on each layout.
 
 ### 2. Research a pattern across a category
 
@@ -91,10 +91,11 @@ Tips to keep cost down:
     "query": "crypto wallet send confirmation with address and fee",
     "mode": "deep",
     "limit": 10,
+    "image_format": "webp",
     "exclude_screen_ids": ["ed7a0522-...", "18700191-..."]
   })
   ```
-- Use `image_format: "jpg"` only if your client doesn't render webp — webp is smaller.
+- `image_format` defaults to `webp` (smaller payload). Only pass `"jpg"` if your client doesn't render webp.
 - Analyze each batch as text immediately so older base64 images can drop out of context.
 
 ## Usage

@@ -88,6 +88,11 @@ Steps:
 
 For broad research, use `limit: 20-30`. For focused queries, `limit: 10-15` is sufficient. If the user wants more variety after an initial batch, pass prior result IDs via `exclude_screen_ids` to get fresh results.
 
+**Cost-saver parameters** (use on every call):
+
+- `exclude_screen_ids`: array of screen IDs from previous calls in the same conversation. Prevents duplicates and wasted image payload on follow-up searches.
+- `image_format`: defaults to `"webp"` (smaller). Only pass `"jpg"` if the client can't render webp.
+
 **Important: analyze incrementally.** Do not accumulate all search results before writing. Each batch of screenshots consumes significant context. Write your visual analysis (app names, URLs, layout observations, component notes) as text immediately after each batch returns. Text persists through context compaction; base64 images do not.
 
 ### When the mode is unclear
