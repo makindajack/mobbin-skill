@@ -60,6 +60,8 @@ What components do I need for a crypto wallet design system? Decompose into atom
 
 > **Tip:** If you ask vague questions like _"good onboarding"_ or _"trust patterns"_, the skill will rewrite them into concrete visual queries before searching. Use specific UI language for best results.
 
+> **Need more starter prompts?** See [`references/prompt-templates.md`](references/prompt-templates.md) for fill-in-the-blank templates covering quick lookup, pattern research, competitive comparison, design system extraction, and decision support — plus a slot cheatsheet of categories, screen types, and components.
+
 ## Usage
 
 Once installed, the skill activates when you ask about UI research, screen patterns, or design system components:
@@ -84,6 +86,7 @@ The skill automatically:
 | File                                                                     | Purpose                                                                                                |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | [`SKILL.md`](SKILL.md)                                                   | Core skill — query construction, analysis framework, output formats, design system component mode      |
+| [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                |
 | [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                             |
 | [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log) |
 
