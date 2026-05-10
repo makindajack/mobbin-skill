@@ -3,7 +3,9 @@
 All notable changes to this skill are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [0.2.0] — 2026-05-10
+## [1.0.0] — 2026-05-10
+
+First release of this fork. Includes the original skill from upstream `ddruids/mobbin-skill` (core `SKILL.md`, `references/query-patterns.md`, `references/synthesis-framework.md`) plus the additions and changes below.
 
 ### Added
 
@@ -35,9 +37,3 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - **Claude Code install URL** in `README.md` install table now points to this fork (`makindajack/mobbin-skill`) with a note pointing to upstream `ddruids/mobbin-skill` for the original.
 - **Quick Start example #1** expected-output line softened to "apps like Chime, Fi, or Revolut — actual results vary per query" so first-run users don't expect deterministic app names.
 - **`SKILL.md` `description` frontmatter** trimmed from ~80 words of trigger phrases to a focused one-liner.
-
-## [0.1.0] — Initial release
-
-- Core `SKILL.md` covering query construction, platform resolution, workflow, output format, and design system component mode.
-- `references/query-patterns.md` with the query formula and example catalog.
-- `references/synthesis-framework.md` with 8 analysis lenses and 3 output templates.
