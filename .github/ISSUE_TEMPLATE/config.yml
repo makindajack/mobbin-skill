@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Mobbin MCP setup help
+    url: https://mobbin.com
+    about: Issues with the Mobbin MCP server itself (auth, billing, missing screens) belong with Mobbin support, not this repo.

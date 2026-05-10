@@ -1,0 +1,62 @@
+name: Bug report
+description: Something isn't working as documented in the skill.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A short description of the unexpected behavior.
+      placeholder: e.g., "The skill returned weak results but did not auto-broaden the query."
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt you sent
+      description: The exact prompt the user gave the agent.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What the skill should have done according to SKILL.md or the references.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What the skill actually did. Include the agent's reply if useful.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client
+    attributes:
+      label: Agent / client
+      options:
+        - Claude Code
+        - Cursor
+        - VS Code Copilot
+        - Codex CLI
+        - Gemini CLI
+        - Lovable
+        - Other (describe in "What happened?")
+    validations:
+      required: true
+
+  - type: input
+    id: skill-version
+    attributes:
+      label: Skill version / commit
+      description: Tag, branch, or commit SHA you're on. `main` is fine if you're on the latest.
+      placeholder: e.g., main @ abc1234
+    validations:
+      required: false
