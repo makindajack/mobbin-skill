@@ -12,6 +12,10 @@ Turn [Mobbin](https://mobbin.com)'s 300K+ screen library into structured UI rese
 
 Works with Claude Code, Cursor, Codex CLI, Gemini CLI, Cline, Goose, VS Code Copilot, Lovable, and any other MCP-compatible agent.
 
+## Disclaimer
+
+This is an independent, community-maintained skill — **not affiliated with Mobbin Inc., Anthropic, GitHub, Cursor, or any other product mentioned**. Compatibility badges describe technical interoperability only. Using the Mobbin MCP server means you're bound by [Mobbin's Terms of Service](https://mobbin.com/terms) — see [`docs/responsible-use.md`](docs/responsible-use.md) for what to avoid (account sharing, bulk caching, building competing products).
+
 ## Quick links
 
 | I want to…                                       | Go here                                                |
@@ -60,32 +64,12 @@ If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://g
    Show me 5 iOS fintech onboarding screens that use a phone number input and a progress indicator.
    ```
 
-## Repo map
-
-| File / folder                                                            | Purpose                                                                                                        |
-| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| [`SKILL.md`](SKILL.md)                                                   | Core skill — query construction, analysis framework, output formats, design system component mode              |
-| [`docs/`](docs/)                                                         | Long-form documentation (install, MCP setup, compatibility, quick start, cost, responsible use)                |
-| [`clients/`](clients/)                                                   | Pre-configured drop-in files for Claude Code, Cursor, Codex CLI, Gemini CLI, Cline, Goose, and VS Code Copilot |
-| [`examples/`](examples/)                                                 | 5 real input → output transcripts: quick lookup, pattern research, comparison, design system, recovery         |
-| [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                        |
-| [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                                     |
-| [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log)         |
-| [`references/anti-patterns.md`](references/anti-patterns.md)             | Behavior anti-patterns observed in real use — symptom → cause → fix                                            |
-| [`validate.sh`](validate.sh)                                             | Sanity script — runs a known Mode A query and greps the output for required elements                           |
-| [`CHANGELOG.md`](CHANGELOG.md)                                           | Versioned change history                                                                                       |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md)                                     | Issue routing, PR checklist, scope                                                                             |
-
 ## Credits
 
 - Original skill by **[ddruids/mobbin-skill](https://github.com/ddruids/mobbin-skill)** — the foundation this fork builds on.
 - Maintained in this fork by **[@makindajack](https://github.com/makindajack)** with UX improvements, mode-aware workflow, prompt templates, examples, and cost guidance.
 - Powered by the [Mobbin MCP server](https://mobbin.com) and the [Model Context Protocol](https://modelcontextprotocol.io).
 - Contributions welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
-## Disclaimer
-
-This is an independent, community-maintained skill — **not affiliated with Mobbin Inc., Anthropic, GitHub, Cursor, or any other product mentioned**. Compatibility badges describe technical interoperability only. Using the Mobbin MCP server means you're bound by [Mobbin's Terms of Service](https://mobbin.com/terms) — see [`docs/responsible-use.md`](docs/responsible-use.md) for what to avoid (account sharing, bulk caching, building competing products).
 
 ## License
 
