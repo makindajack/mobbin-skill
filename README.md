@@ -86,6 +86,7 @@ The skill automatically:
 | File                                                                     | Purpose                                                                                                |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | [`SKILL.md`](SKILL.md)                                                   | Core skill — query construction, analysis framework, output formats, design system component mode      |
+| [`examples/`](examples/)                                                 | 5 real input → output transcripts: quick lookup, pattern research, comparison, design system, recovery |
 | [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                |
 | [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                             |
 | [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log) |
