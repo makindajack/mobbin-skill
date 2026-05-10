@@ -10,19 +10,32 @@
 
 Turn [Mobbin](https://mobbin.com)'s 300K+ screen library into structured UI research. Give your agent a research goal — it searches Mobbin, visually analyzes the screenshots, and returns pattern clusters, design system components, or competitive comparisons.
 
-Works with Claude Code, Cursor, Gemini CLI, Lovable, and any MCP-compatible agent.
+Works with Claude Code, Cursor, Codex CLI, Gemini CLI, Cline, Goose, VS Code Copilot, Lovable, and any other MCP-compatible agent.
+
+## Quick links
+
+| I want to…                                       | Go here                                                |
+| ------------------------------------------------ | ------------------------------------------------------ |
+| **Install** the skill in my agent                | [`docs/install.md`](docs/install.md)                   |
+| **Connect** the Mobbin MCP server                | [`docs/mcp-setup.md`](docs/mcp-setup.md)               |
+| **See if my CLI is supported**                   | [`docs/compatibility.md`](docs/compatibility.md)       |
+| **Try it in 30 seconds**                         | [`docs/quick-start.md`](docs/quick-start.md)           |
+| **Understand cost / token use**                  | [`docs/cost-and-context.md`](docs/cost-and-context.md) |
+| **See real input → output transcripts**          | [`examples/`](examples/)                               |
+| **Use the MCP without losing my Mobbin account** | [`docs/responsible-use.md`](docs/responsible-use.md)   |
+| **Read the skill itself**                        | [`SKILL.md`](SKILL.md)                                 |
 
 ## Why this fork?
 
 This is a fork of [`ddruids/mobbin-skill`](https://github.com/ddruids/mobbin-skill) with the following additions:
 
 - **Mode A / Mode B split** — a fast single-call lookup mode for "show me…" prompts, separate from the original multi-batch research mode.
-- **Prompt templates** for 5 common use cases plus a slot cheatsheet (`references/prompt-templates.md`).
+- **Prompt templates** for 5 common use cases plus a slot cheatsheet ([`references/prompt-templates.md`](references/prompt-templates.md)).
 - **Examples folder** with 5 real input → output transcripts.
-- **Cost & context guidance** — mode/limit/payload table, `exclude_screen_ids` pattern, `image_format: webp` default.
+- **Cost & context guidance** — mode/limit/payload table, `exclude_screen_ids` pattern, `image_format: webp` default ([`docs/cost-and-context.md`](docs/cost-and-context.md)).
 - **Fallback rule** for weak results: auto-broaden → swap mode → honest report instead of padding output.
-- **Behavior anti-patterns** catalog (`references/anti-patterns.md`).
-- **Pre-configured client files** for Claude Code and Cursor (`clients/`).
+- **Behavior anti-patterns** catalog ([`references/anti-patterns.md`](references/anti-patterns.md)).
+- **Pre-configured client files** for 7 tools — see [`clients/`](clients/).
 - **`validate.sh`** sanity check + `CONTRIBUTING.md` + GitHub issue templates + Mobbin-ToS responsible-use guidance.
 
 If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://github.com/ddruids/mobbin-skill) instead.
@@ -35,215 +48,45 @@ If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://g
 - Surfaces atomic design system primitives when asked about components
 - Supports three output modes: research summary, competitive comparison, product decision log
 
-## Install
+## 30-second install
 
-Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first.
+1. **Connect the MCP server** — see [`docs/mcp-setup.md`](docs/mcp-setup.md). For most clients it's a single command pointing at `https://api.mobbin.com/mcp`.
+2. **Drop the skill into your agent** — pick your tool from [`docs/install.md`](docs/install.md). For Claude Code:
+   ```bash
+   npx skills add https://github.com/makindajack/mobbin-skill
+   ```
+3. **Try it** — paste a [Quick Start prompt](docs/quick-start.md) like:
+   ```
+   Show me 5 iOS fintech onboarding screens that use a phone number input and a progress indicator.
+   ```
 
-The skill is just markdown — install it however your agent loads custom instructions.
+## Repo map
 
-| Client                 | Install method                                                                                                                                                                                                                                                                   |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Claude Code**        | `npx skills add https://github.com/makindajack/mobbin-skill` <br>_or_ symlink `clients/claude/skills/mobbin/` into `~/.claude/skills/` <br>_(install the upstream `ddruids/mobbin-skill` if you want the original without this fork's Mode A/B, prompt templates, and examples)_ |
-| **Cursor**             | Copy [`clients/cursor/mobbin.mdc`](clients/cursor/mobbin.mdc) into `.cursor/rules/` (project) or `~/.cursor/rules/` (global) — frontmatter pre-filled                                                                                                                            |
-| **Codex CLI**          | Copy [`clients/codex/AGENTS.md`](clients/codex/AGENTS.md) into your project root                                                                                                                                                                                                 |
-| **Gemini CLI**         | Copy [`clients/gemini/GEMINI.md`](clients/gemini/GEMINI.md) into your project root                                                                                                                                                                                               |
-| **Cline** (VS Code)    | Copy [`clients/cline/.clinerules/mobbin.md`](clients/cline/.clinerules/mobbin.md) into `.clinerules/` in your project                                                                                                                                                            |
-| **Goose**              | Copy [`clients/goose/.goosehints`](clients/goose/.goosehints) into your project root                                                                                                                                                                                             |
-| **VS Code (Copilot)**  | Copy [`clients/copilot/mobbin.prompt.md`](clients/copilot/mobbin.prompt.md) into `~/Library/Application Support/Code/User/prompts/` (macOS) — invoke with `/mobbin` in chat. Same file works for the **Copilot CLI** when symlinked into your project root.                      |
-| **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                                                                                                                                                                                             |
-| **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                                                                                                                                                                                               |
-
-> **Note:** `npx skills add` only works with agents that support the [skills CLI](https://github.com/anthropics/skills) — currently Claude Code. Other clients need a manual copy.
-
-## Compatibility
-
-The skill is just markdown, so any agent that loads custom instructions can read it. To actually call `search_screens` you need an **MCP-capable** host — the table below lists what works end-to-end.
-
-| CLI / agent          | Loads `SKILL.md` | MCP support | End-to-end | Notes                                                            |
-| -------------------- | ---------------- | ----------- | ---------- | ---------------------------------------------------------------- |
-| Claude Code          | ✅               | ✅          | ✅ yes     | Pre-configured: `clients/claude/`                                |
-| Cursor               | ✅               | ✅          | ✅ yes     | Pre-configured: `clients/cursor/`                                |
-| Codex CLI (OpenAI)   | ✅               | ✅          | ✅ yes     | Pre-configured: `clients/codex/`                                 |
-| Gemini CLI (Google)  | ✅               | ✅          | ✅ yes     | Pre-configured: `clients/gemini/`                                |
-| Cline (VS Code ext.) | ✅               | ✅          | ✅ yes     | Pre-configured: `clients/cline/`                                 |
-| Goose (Block)        | ✅               | ✅          | ✅ yes     | Pre-configured: `clients/goose/`                                 |
-| VS Code Copilot      | ✅               | ✅          | ✅ yes     | Manual: save as a `.prompt.md`                                   |
-| Lovable              | ✅               | ✅          | ✅ yes     | Manual: paste into custom instructions                           |
-| Aider                | ✅               | ❌          | ⚠️ no      | Loads writing rules with `--read SKILL.md` but can't call Mobbin |
-| `llm` CLI            | ✅               | ❌          | ⚠️ no      | System-prompt only; no MCP host                                  |
-| Plain Ollama         | ✅               | ❌          | ⚠️ no      | System-prompt only; no MCP host                                  |
-
-If your CLI isn't listed but supports MCP, copy `SKILL.md` into whatever file it uses for system instructions and configure the [Mobbin MCP server](#setup-mobbin-mcp) per its docs.
-
-## Quick Start
-
-After installing the skill and connecting Mobbin MCP, paste any of these prompts into your agent to see it working in under 30 seconds.
-
-### 1. See 5 examples fast
-
-```
-Show me 5 iOS fintech onboarding screens that use a phone number input and a progress indicator.
-```
-
-**You'll get:** A short comparison table of 5 real apps (e.g., apps like Chime, Fi, or Revolut — actual results vary per query) with linked Mobbin URLs and a one-line note on each layout.
-
-### 2. Research a pattern across a category
-
-```
-Research how crypto wallet apps handle send/transfer confirmation on iOS. Focus on trust, fee transparency, and recovery from mistakes.
-```
-
-**You'll get:** A `Mobbin Research Summary` with pattern clusters (e.g., "Pre-confirmation summary card", "Slide-to-confirm gesture"), key observations, and reusable patterns — every reference linked to its Mobbin screen.
-
-### 3. Extract a design system
-
-```
-What components do I need for a crypto wallet design system? Decompose into atomic primitives, not screen patterns.
-```
-
-**You'll get:** A list of atomic primitives like `Truncated Address`, `Token Icon`, `Currency Display`, `Fee Breakdown Row`, `Slide-to-Confirm` — each with variants and the apps that use them.
-
-> **Tip:** If you ask vague questions like _"good onboarding"_ or _"trust patterns"_, the skill will rewrite them into concrete visual queries before searching. Use specific UI language for best results.
-
-> **Need more starter prompts?** See [`references/prompt-templates.md`](references/prompt-templates.md) for fill-in-the-blank templates covering quick lookup, pattern research, competitive comparison, design system extraction, and decision support — plus a slot cheatsheet of categories, screen types, and components.
-
-## Cost & context use
-
-`search_screens` returns inline images (base64) alongside metadata. Image payload dominates token cost.
-
-| Mode   | Limit | Approx. images | Approx. payload | When to use                                                                        |
-| ------ | ----- | -------------- | --------------- | ---------------------------------------------------------------------------------- |
-| `fast` | 5     | 5              | ~1–2 MB         | Quick lookup, exploratory "show me" prompts                                        |
-| `fast` | 10    | 10             | ~2–4 MB         | Slightly broader scan, still cheap                                                 |
-| `deep` | 10–15 | 10–15          | ~4–6 MB         | Focused research on one screen moment                                              |
-| `deep` | 20–30 | 20–30          | ~8–12 MB        | Broad pattern research — may push smaller agents toward their context window limit |
-
-Tips to keep cost down:
-
-- Default to `mode: "fast"` and `limit: 5–10` unless the user explicitly asks for deep research.
-- Pass prior result IDs via `exclude_screen_ids` on follow-up calls instead of re-running broader queries:
-  ```json
-  search_screens({
-    "platform": "ios",
-    "query": "crypto wallet send confirmation with address and fee",
-    "mode": "deep",
-    "limit": 10,
-    "image_format": "webp",
-    "exclude_screen_ids": ["ed7a0522-...", "18700191-..."]
-  })
-  ```
-- `image_format` defaults to `webp` (smaller payload). Only pass `"jpg"` if your client doesn't render webp.
-- Analyze each batch as text immediately so older base64 images can drop out of context.
-
-## Usage
-
-Once installed, the skill activates when you ask about UI research, screen patterns, or design system components:
-
-```
-"Research how fintech apps handle onboarding"
-"Compare how crypto wallets display transaction confirmation"
-"What are common components for a SaaS dashboard design system?"
-"How do AI apps handle empty states on iOS?"
-```
-
-The skill automatically:
-
-1. Resolves the target platform (iOS or web)
-2. Generates 3-7 concrete search queries
-3. Calls Mobbin's `search_screens` with `mode: "deep"`
-4. Analyzes the returned screenshots
-5. Synthesizes findings into structured output with Mobbin URLs
-
-## What's inside
-
-| File                                                                     | Purpose                                                                                                        |
+| File / folder                                                            | Purpose                                                                                                        |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
 | [`SKILL.md`](SKILL.md)                                                   | Core skill — query construction, analysis framework, output formats, design system component mode              |
+| [`docs/`](docs/)                                                         | Long-form documentation (install, MCP setup, compatibility, quick start, cost, responsible use)                |
+| [`clients/`](clients/)                                                   | Pre-configured drop-in files for Claude Code, Cursor, Codex CLI, Gemini CLI, Cline, Goose, and VS Code Copilot |
 | [`examples/`](examples/)                                                 | 5 real input → output transcripts: quick lookup, pattern research, comparison, design system, recovery         |
 | [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                        |
 | [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                                     |
 | [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log)         |
 | [`references/anti-patterns.md`](references/anti-patterns.md)             | Behavior anti-patterns observed in real use — symptom → cause → fix                                            |
-| [`clients/`](clients/)                                                   | Pre-configured drop-in files for Claude Code, Cursor, Codex CLI, Gemini CLI, Cline, Goose, and VS Code Copilot |
 | [`validate.sh`](validate.sh)                                             | Sanity script — runs a known Mode A query and greps the output for required elements                           |
-
----
-
-<details id="setup-mobbin-mcp">
-<summary><strong>Setup Mobbin MCP</strong></summary>
-
-1. Sign up at [mobbin.com](https://mobbin.com)
-2. Go to [**Settings → MCP**](https://mobbin.com/settings/mcp) (or click your profile icon top right → **Settings** → **MCP**)
-3. Select your tool and follow the instructions, or use one of these:
-
-> **Mobbin account & plan tiers**
->
-> - You need a **Mobbin account** to use the MCP server (free signup at [mobbin.com](https://mobbin.com)).
-> - **Free tier:** limited daily searches and a smaller subset of the screen library. Fine for trying the skill out.
-> - **Paid plans (Pro / Team):** higher search quotas, full library access, and the depth needed for serious research workflows like Mode B (Full Research) or design system extraction.
-> - Mobbin sets and changes these limits — check your plan page in Settings for current quotas. This skill makes no guarantees about Mobbin's pricing or quotas.
-> - **One account per person.** Mobbin's [Terms](https://mobbin.com/terms) (§4.1.b) prohibit account sharing — don't paste your MCP credentials into a shared repo, team `.env`, or chat. Team / Enterprise plans use seats; assign one per user.
-
-**Claude Code:**
-
-```bash
-claude mcp add mobbin \
-  --transport http https://api.mobbin.com/mcp
-```
-
-**Cursor:**
-
-```json
-{
-  "mcpServers": {
-    "mobbin": {
-      "serverUrl": "https://api.mobbin.com/mcp"
-    }
-  }
-}
-```
-
-**Codex:**
-
-```bash
-codex mcp add mobbin --url https://api.mobbin.com/mcp
-```
-
-**Lovable:**
-
-```
-https://api.mobbin.com/mcp
-```
-
-</details>
+| [`CHANGELOG.md`](CHANGELOG.md)                                           | Versioned change history                                                                                       |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md)                                     | Issue routing, PR checklist, scope                                                                             |
 
 ## Credits
 
 - Original skill by **[ddruids/mobbin-skill](https://github.com/ddruids/mobbin-skill)** — the foundation this fork builds on.
 - Maintained in this fork by **[@makindajack](https://github.com/makindajack)** with UX improvements, mode-aware workflow, prompt templates, examples, and cost guidance.
 - Powered by the [Mobbin MCP server](https://mobbin.com) and the [Model Context Protocol](https://modelcontextprotocol.io).
-- Contributions welcome — open an issue using the templates in `.github/ISSUE_TEMPLATE/`.
+- Contributions welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Disclaimer
 
-This is an independent, community-maintained skill. It is **not affiliated with, endorsed by, or sponsored by Mobbin Inc., Anthropic, GitHub, Cursor, or any of the other products mentioned**. Compatibility badges describe technical interoperability only.
-
-Mobbin is a trademark of Mobbin Inc. Claude Code is a trademark of Anthropic. VS Code and GitHub Copilot are trademarks of Microsoft / GitHub. Cursor is a trademark of Anysphere Inc. All other product names, logos, and brands are property of their respective owners and are used here for descriptive purposes only.
-
-App screenshots referenced in `examples/` and returned by the Mobbin MCP server are the property of their respective applications and are accessed via Mobbin's licensed API. This repository does not store or redistribute any third-party app screenshots.
-
-### Responsible use of the Mobbin MCP
-
-Using the MCP server means you're bound by [Mobbin's Terms of Service](https://mobbin.com/terms). To avoid account suspension or termination, **do not**:
-
-- **Share your Mobbin account or MCP credentials** with other people, including teammates (§4.1.b — strictly prohibited; use Team/Enterprise seats instead).
-- **Bulk-download, mirror, or cache** screens or images returned by the MCP for redistribution (§3.b.iv, §3.b.xii).
-- **Use the MCP output to build a competing product**, train a model on Mobbin's library, or generate derivative datasets (§3.c.iv).
-- **Republish screenshots** without crediting the original Copyright Holders, and only in the limited extent permitted by §10.3.a.
-- **Run automated bulk crawlers** through the MCP (rapid-fire queries far beyond normal interactive design research). Keep usage human-paced.
-
-**Do** use the MCP for what it's designed for: personal, interactive design research and inspiration inside an AI coding/design tool. Mobbin can suspend or terminate access for breaches at their sole discretion (§17, §20).
+This is an independent, community-maintained skill — **not affiliated with Mobbin Inc., Anthropic, GitHub, Cursor, or any other product mentioned**. Compatibility badges describe technical interoperability only. Using the Mobbin MCP server means you're bound by [Mobbin's Terms of Service](https://mobbin.com/terms) — see [`docs/responsible-use.md`](docs/responsible-use.md) for what to avoid (account sharing, bulk caching, building competing products).
 
 ## License
 
-MIT
+MIT — see [`LICENSE`](LICENSE).
