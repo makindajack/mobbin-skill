@@ -1,6 +1,6 @@
 ---
 name: mobbin-ui-research
-description: "This skill should be used when the user needs UI/UX research, competitive screen analysis, or design pattern exploration using Mobbin MCP. Triggers on: Mobbin search, UI research, screen references, product flow research, pattern analysis, competitive UI audit, UX benchmarking, onboarding patterns, empty states, error states, confirmation screens, fintech UX, crypto UX, AI product patterns, SaaS dashboard patterns, ecommerce checkout patterns, or turning abstract product questions into concrete screen searches."
+description: "UI/UX research using the Mobbin MCP server. Use when the user asks for screen references, pattern analysis, competitive UI audits, design system primitives, or wants to translate an abstract product question into concrete real-app screens. Triggers: Mobbin search, UI research, screen examples, pattern research, competitive comparison, design system extraction."
 ---
 
 # Mobbin UI Research Skill

@@ -3,3 +3,6 @@ contact_links:
   - name: Mobbin MCP setup help
     url: https://mobbin.com
     about: Issues with the Mobbin MCP server itself (auth, billing, missing screens) belong with Mobbin support, not this repo.
+  - name: Questions & Discussions
+    url: https://github.com/makindajack/mobbin-skill/discussions
+    about: Have a question, want to share a prompt that worked well, or discuss skill design? Open a Discussion instead of an issue.
