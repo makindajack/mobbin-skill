@@ -85,3 +85,52 @@ For broad research topics, use `exclude_screen_ids` to get fresh results across 
 4. Repeat to build a diverse set of references.
 
 This is useful when the user wants comprehensive coverage across many apps rather than the top results for a single query.
+
+### Copy-paste example
+
+First call:
+
+```json
+search_screens({
+  "platform": "ios",
+  "query": "crypto wallet send transaction confirmation screen with recipient address amount fee breakdown and confirm button",
+  "mode": "deep",
+  "limit": 15
+})
+```
+
+Collect the `id` of every result, then run a varied follow-up that excludes them:
+
+```json
+search_screens({
+  "platform": "ios",
+  "query": "crypto wallet swap confirmation screen with token pair slippage and price impact warning",
+  "mode": "deep",
+  "limit": 15,
+  "exclude_screen_ids": [
+    "729b8463-bbc5-4ef0-a58c-b833985dfcb2",
+    "5f99db5f-92dd-4d01-b841-b1dbc6fd7258",
+    "676d6d79-fb58-4dff-a517-af056631e589"
+  ]
+})
+```
+
+This avoids re-fetching the same screens (saving context + tokens) and forces the corpus to surface fresh examples.
+
+## Don't do this
+
+The most common reason `search_screens` returns weak results is an abstract, jargon-heavy query. Always rewrite into concrete visual language before calling.
+
+| ❌ Bad query | ✅ Fixed query |
+|---|---|
+| `"good onboarding for crypto apps"` | `"crypto wallet welcome screen with seed-phrase backup CTA, biometric setup option, and skip link"` |
+| `"trust patterns for fintech transfers"` | `"fintech transfer confirmation screen with itemized fee breakdown, recipient summary card, and confirm button"` |
+| `"a really clean SaaS dashboard"` | `"web SaaS analytics dashboard with sidebar navigation, KPI cards, line chart, data table, and date-range filter"` |
+
+Anti-patterns to avoid:
+
+- **Subjective adjectives** ("clean", "modern", "slick", "good", "best") — the search engine can't see aesthetics, only described elements.
+- **Product theory** ("trust", "conversion", "engagement", "retention") — these are outcomes, not visible UI elements.
+- **Stacking 4+ niche concepts** ("rejection screen with personalized counter-offer and soft-credit-pull explainer") — split into two queries instead. See `examples/05-recovery-from-bad-query.md`.
+- **Naming a single screen type with no components** ("a settings screen") — too broad; add 2–3 visible elements to focus the search.
+

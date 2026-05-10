@@ -127,6 +127,13 @@ The skill automatically:
 2. Click your profile icon (top right) → **Settings** → **MCP**
 3. Select your tool and follow the instructions, or use one of these:
 
+> **Mobbin account & plan tiers**
+>
+> - You need a **Mobbin account** to use the MCP server (free signup at [mobbin.com](https://mobbin.com)).
+> - **Free tier:** limited daily searches and a smaller subset of the screen library. Fine for trying the skill out.
+> - **Paid plans (Pro / Team):** higher search quotas, full library access, and the depth needed for serious research workflows like Mode B (Full Research) or design system extraction.
+> - Mobbin sets and changes these limits — check your plan page in Settings for current quotas. This skill makes no guarantees about Mobbin's pricing or quotas.
+
 **Claude Code:**
 
 ```bash
