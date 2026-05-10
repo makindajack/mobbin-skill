@@ -62,6 +62,33 @@ What components do I need for a crypto wallet design system? Decompose into atom
 
 > **Need more starter prompts?** See [`references/prompt-templates.md`](references/prompt-templates.md) for fill-in-the-blank templates covering quick lookup, pattern research, competitive comparison, design system extraction, and decision support — plus a slot cheatsheet of categories, screen types, and components.
 
+## Cost & context use
+
+`search_screens` returns inline images (base64) alongside metadata. Image payload dominates token cost.
+
+| Mode   | Limit | Approx. images | Approx. payload | When to use                                                                        |
+| ------ | ----- | -------------- | --------------- | ---------------------------------------------------------------------------------- |
+| `fast` | 5     | 5              | ~1–2 MB         | Quick lookup, exploratory "show me" prompts                                        |
+| `fast` | 10    | 10             | ~2–4 MB         | Slightly broader scan, still cheap                                                 |
+| `deep` | 10–15 | 10–15          | ~4–6 MB         | Focused research on one screen moment                                              |
+| `deep` | 20–30 | 20–30          | ~8–12 MB        | Broad pattern research — may push smaller agents toward their context window limit |
+
+Tips to keep cost down:
+
+- Default to `mode: "fast"` and `limit: 5–10` unless the user explicitly asks for deep research.
+- Pass prior result IDs via `exclude_screen_ids` on follow-up calls instead of re-running broader queries:
+  ```json
+  search_screens({
+    "platform": "ios",
+    "query": "crypto wallet send confirmation with address and fee",
+    "mode": "deep",
+    "limit": 10,
+    "exclude_screen_ids": ["ed7a0522-...", "18700191-..."]
+  })
+  ```
+- Use `image_format: "jpg"` only if your client doesn't render webp — webp is smaller.
+- Analyze each batch as text immediately so older base64 images can drop out of context.
+
 ## Usage
 
 Once installed, the skill activates when you ask about UI research, screen patterns, or design system components:

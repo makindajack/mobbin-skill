@@ -64,10 +64,10 @@ Returns 2 relevant results. **Still <3 strong matches**. Stop and report honestl
 >
 > Here's what I did find:
 >
-> | App | Pattern | Notable detail | Link |
-> |-----|---------|----------------|------|
-> | _(example)_ Affirm | Rejection with line-of-credit counter-offer | Counter-offer shown as a separate card below the rejection notice | _(real link if returned)_ |
-> | _(example)_ Klarna | Soft-decline with "you may qualify for X" message | Counter-offer is a button, not a card | _(real link if returned)_ |
+> | App                | Pattern                                           | Notable detail                                                    | Link                      |
+> | ------------------ | ------------------------------------------------- | ----------------------------------------------------------------- | ------------------------- |
+> | _(example)_ Affirm | Rejection with line-of-credit counter-offer       | Counter-offer shown as a separate card below the rejection notice | _(real link if returned)_ |
+> | _(example)_ Klarna | Soft-decline with "you may qualify for X" message | Counter-offer is a button, not a card                             | _(real link if returned)_ |
 >
 > ### Suggestions to find more
 >
