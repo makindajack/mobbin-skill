@@ -3,6 +3,24 @@
 All notable changes to this skill are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.2] — 2026-05-10
+
+### Added
+
+- **Pre-configured drop-in files for 5 more CLIs** under `clients/`:
+  - `clients/codex/AGENTS.md` (symlink) — Codex CLI auto-loads `AGENTS.md` from the project root.
+  - `clients/gemini/GEMINI.md` (symlink) — Gemini CLI's project context file.
+  - `clients/cline/.clinerules/mobbin.md` (symlink) — Cline (VS Code extension) project rules.
+  - `clients/goose/.goosehints` (symlink) — Goose project hints file.
+  - `clients/copilot/mobbin.prompt.md` — VS Code Copilot Chat / Copilot CLI prompt file with `mode: agent` frontmatter; invoke with `/mobbin`.
+- **Compatibility section** in `README.md` listing 11 CLIs with `Loads SKILL.md` / `MCP support` / `End-to-end` columns, so users can see at a glance which agents work fully (Claude Code, Cursor, Codex, Gemini, Cline, Goose, VS Code Copilot, Lovable) vs. instructions-only (Aider, `llm`, plain Ollama).
+
+### Changed
+
+- **README install table** expanded with rows for Codex CLI, Gemini CLI, Cline, and Goose pointing to the new `clients/` files (replaces the previous hand-wavy "drop the repo into…" / "reference SKILL.md in your GEMINI.md" notes).
+- **`clients/README.md`** index extended to document all 7 client folders (claude, cursor, codex, gemini, cline, goose, copilot) with install commands, plus a heads-up about MCP requirement.
+- **VS Code Copilot install row** in the README install table now points to the pre-configured `clients/copilot/mobbin.prompt.md` (with `mode: agent` frontmatter) instead of telling users to rename `SKILL.md` themselves. Same file works for the GitHub Copilot CLI when symlinked into a project root.
+
 ## [1.0.1] — 2026-05-10
 
 ### Added

@@ -49,7 +49,7 @@ The skill is just markdown — install it however your agent loads custom instru
 | **Gemini CLI**         | Copy [`clients/gemini/GEMINI.md`](clients/gemini/GEMINI.md) into your project root                                                                                                                                                                                               |
 | **Cline** (VS Code)    | Copy [`clients/cline/.clinerules/mobbin.md`](clients/cline/.clinerules/mobbin.md) into `.clinerules/` in your project                                                                                                                                                            |
 | **Goose**              | Copy [`clients/goose/.goosehints`](clients/goose/.goosehints) into your project root                                                                                                                                                                                             |
-| **VS Code (Copilot)**  | Save [`SKILL.md`](SKILL.md) as `mobbin.prompt.md` in `~/Library/Application Support/Code/User/prompts/` (macOS)                                                                                                                                                                  |
+| **VS Code (Copilot)**  | Copy [`clients/copilot/mobbin.prompt.md`](clients/copilot/mobbin.prompt.md) into `~/Library/Application Support/Code/User/prompts/` (macOS) — invoke with `/mobbin` in chat. Same file works for the **Copilot CLI** when symlinked into your project root.                      |
 | **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                                                                                                                                                                                             |
 | **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                                                                                                                                                                                               |
 
@@ -156,16 +156,16 @@ The skill automatically:
 
 ## What's inside
 
-| File                                                                     | Purpose                                                                                                |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| [`SKILL.md`](SKILL.md)                                                   | Core skill — query construction, analysis framework, output formats, design system component mode      |
-| [`examples/`](examples/)                                                 | 5 real input → output transcripts: quick lookup, pattern research, comparison, design system, recovery |
-| [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                |
-| [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                             |
-| [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log) |
-| [`references/anti-patterns.md`](references/anti-patterns.md)             | Behavior anti-patterns observed in real use — symptom → cause → fix                                    |
-| [`clients/`](clients/)                                                   | Pre-configured drop-in files for Claude Code and Cursor                                                |
-| [`validate.sh`](validate.sh)                                             | Sanity script — runs a known Mode A query and greps the output for required elements                   |
+| File                                                                     | Purpose                                                                                                        |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| [`SKILL.md`](SKILL.md)                                                   | Core skill — query construction, analysis framework, output formats, design system component mode              |
+| [`examples/`](examples/)                                                 | 5 real input → output transcripts: quick lookup, pattern research, comparison, design system, recovery         |
+| [`references/prompt-templates.md`](references/prompt-templates.md)       | Fill-in-the-blank prompt templates by use case, plus a slot cheatsheet of common values                        |
+| [`references/query-patterns.md`](references/query-patterns.md)           | Query formula, platform-specific guidance, 20+ example queries by category                                     |
+| [`references/synthesis-framework.md`](references/synthesis-framework.md) | 8 analysis lenses, 3 output templates (research summary, competitive comparison, product decision log)         |
+| [`references/anti-patterns.md`](references/anti-patterns.md)             | Behavior anti-patterns observed in real use — symptom → cause → fix                                            |
+| [`clients/`](clients/)                                                   | Pre-configured drop-in files for Claude Code, Cursor, Codex CLI, Gemini CLI, Cline, Goose, and VS Code Copilot |
+| [`validate.sh`](validate.sh)                                             | Sanity script — runs a known Mode A query and greps the output for required elements                           |
 
 ---
 
