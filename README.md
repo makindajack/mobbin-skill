@@ -14,11 +14,21 @@ Works with Claude Code, Cursor, Gemini CLI, Lovable, and any MCP-compatible agen
 
 ## Install
 
-Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first. Copy and Paste in Terminal to install skill
+Requires [Mobbin MCP](#setup-mobbin-mcp) to be connected first.
 
-```bash
-npx skills add https://github.com/ddruids/mobbin-skill
-```
+The skill is just markdown — install it however your agent loads custom instructions.
+
+| Client                 | Install method                                                                                                  |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Claude Code**        | `npx skills add https://github.com/ddruids/mobbin-skill` <br>_or_ symlink the repo into `~/.claude/skills/`     |
+| **Cursor**             | Copy [`SKILL.md`](SKILL.md) into `.cursor/rules/mobbin.mdc` (project) or `~/.cursor/rules/` (global)            |
+| **VS Code (Copilot)**  | Save [`SKILL.md`](SKILL.md) as `mobbin.prompt.md` in `~/Library/Application Support/Code/User/prompts/` (macOS) |
+| **Codex CLI**          | Drop the repo into `~/.codex/skills/mobbin/`                                                                    |
+| **Gemini CLI**         | Reference [`SKILL.md`](SKILL.md) in your `GEMINI.md` system prompt                                              |
+| **Lovable**            | Paste the contents of [`SKILL.md`](SKILL.md) into your project's custom instructions                            |
+| **Any MCP-compatible** | Copy [`SKILL.md`](SKILL.md) contents into your agent's system prompt or rules file                              |
+
+> **Note:** `npx skills add` only works with agents that support the [skills CLI](https://github.com/anthropics/skills) — currently Claude Code. Other clients need a manual copy.
 
 ## Quick Start
 
