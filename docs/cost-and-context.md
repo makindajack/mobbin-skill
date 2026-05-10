@@ -13,6 +13,7 @@
 
 - **Default to `mode: "fast"` and `limit: 5–10`** unless the user explicitly asks for deep research.
 - **Pass prior result IDs via `exclude_screen_ids`** on follow-up calls instead of re-running broader queries:
+
   ```json
   search_screens({
     "platform": "ios",
@@ -23,6 +24,7 @@
     "exclude_screen_ids": ["ed7a0522-...", "18700191-..."]
   })
   ```
+
 - **`image_format` defaults to `webp`** (smaller payload). Only pass `"jpg"` if your client doesn't render webp.
 - **Analyze each batch as text immediately** so older base64 images can drop out of context.
 

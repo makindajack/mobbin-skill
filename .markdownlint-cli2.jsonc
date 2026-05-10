@@ -1,0 +1,18 @@
+{
+  // markdownlint-cli2 config — relaxed for prose-heavy docs.
+  // Full rule list: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  "config": {
+    "default": true,
+    "MD013": false, // line-length — we wrap long URLs and tables
+    "MD033": false, // inline HTML — used for <details> blocks and badges
+    "MD041": false, // first line H1 — README starts with badges
+    "MD024": { "siblings_only": true }, // duplicate headings ok across sections
+    "MD025": false, // multiple top-level headings — examples/ uses them
+    "MD026": false, // trailing punctuation in headings — "Why this fork?" uses ?
+    "MD036": false, // emphasis-as-heading — used in callouts
+    "MD040": false, // fenced code lang — many bare ``` blocks for sample prompts
+    "MD046": false, // code block style — mixed fenced/indented in examples
+    "MD028": false, // blank line in blockquote — intentional between adjacent callouts
+  },
+  "ignores": ["node_modules/**", "clients/copilot/mobbin.prompt.md"],
+}

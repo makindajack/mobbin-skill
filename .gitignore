@@ -1,2 +1,37 @@
+# OS / editor noise
 .DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.code-workspace
+
+# Local working notes
 TODO.md
+NOTES.md
+SCRATCH.md
+*.local.md
+
+# Secrets / credentials — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Per-tool local config that may contain tokens
+.claude/
+.cursor/
+.copilot/
+.codex/
+.gemini/
+.goose/
+.aider*
+
+# Build / cache
+node_modules/
+.cache/
+dist/
+build/

@@ -3,6 +3,24 @@
 All notable changes to this skill are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.0.3] — 2026-05-10
+
+### Added
+
+- **`validate.sh --doctor`** — new offline mode that diagnoses _why_ the skill isn't working without consuming a Mobbin search. Checks installed MCP host CLIs (claude / copilot / cursor / codex / gemini / goose), confirms the Mobbin MCP server is wired up in at least one host, pings `https://api.mobbin.com/mcp` for reachability, and looks for the skill in known install paths. Directly addresses the most common user confusion: _"skill loaded but `search_screens` isn't in my tool list"_.
+- **`SECURITY.md`** — reporting policy (private GitHub Security Advisories), triage expectations, scope.
+- **`docs/troubleshooting.md`** — 6 common failure modes with fixes (MCP not wired, chat OOM from base64 images, rate limits, weak results, duplicate `/mobbin` slash command, `validate.sh` failures).
+- **`.github/workflows/security.yml`** — `shellcheck` for `validate.sh` and `gitleaks` secret scan on push / PR / weekly.
+- **`.github/workflows/docs.yml`** — `markdownlint-cli2` and `lychee` link-check on push / PR / weekly.
+- **`.markdownlint-cli2.jsonc`** — lint config tuned for prose-heavy docs.
+
+### Changed
+
+- **`validate.sh`** rewritten with subcommand-style flags (`--doctor` / `--help` / no flag = live test). Fixed a no-op `check` line that silently never ran the no-padding assertion.
+- **`.gitignore`** expanded from 2 lines to ~36 — covers OS noise, secret patterns (`.env*`, `*.pem`, `*.key`, `secrets.json`, `credentials.json`), per-tool local config (`.claude/`, `.cursor/`, `.copilot/`, `.codex/`, `.gemini/`, `.goose/`, `.aider*`), and build artifacts.
+- **README Quick links** now points to `docs/troubleshooting.md`.
+- **5 markdownlint MD031 violations** (missing blank lines around code fences in list items) fixed in `README.md` and `docs/cost-and-context.md`.
+
 ## [1.0.2] — 2026-05-10
 
 ### Added

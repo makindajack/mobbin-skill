@@ -25,6 +25,7 @@ This is an independent, community-maintained skill — **not affiliated with Mob
 | **See if my CLI is supported**                   | [`docs/compatibility.md`](docs/compatibility.md)       |
 | **Try it in 30 seconds**                         | [`docs/quick-start.md`](docs/quick-start.md)           |
 | **Understand cost / token use**                  | [`docs/cost-and-context.md`](docs/cost-and-context.md) |
+| **Fix something that's broken**                  | [`docs/troubleshooting.md`](docs/troubleshooting.md)   |
 | **See real input → output transcripts**          | [`examples/`](examples/)                               |
 | **Use the MCP without losing my Mobbin account** | [`docs/responsible-use.md`](docs/responsible-use.md)   |
 | **Read the skill itself**                        | [`SKILL.md`](SKILL.md)                                 |
@@ -56,10 +57,13 @@ If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://g
 
 1. **Connect the MCP server** — see [`docs/mcp-setup.md`](docs/mcp-setup.md). For most clients it's a single command pointing at `https://api.mobbin.com/mcp`.
 2. **Drop the skill into your agent** — pick your tool from [`docs/install.md`](docs/install.md). For Claude Code:
+
    ```bash
    npx skills add https://github.com/makindajack/mobbin-skill
    ```
+
 3. **Try it** — paste a [Quick Start prompt](docs/quick-start.md) like:
+
    ```
    Show me 5 iOS fintech onboarding screens that use a phone number input and a progress indicator.
    ```
