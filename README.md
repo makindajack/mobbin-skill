@@ -132,7 +132,7 @@ The skill automatically:
 <summary><strong>Setup Mobbin MCP</strong></summary>
 
 1. Sign up at [mobbin.com](https://mobbin.com)
-2. Click your profile icon (top right) → **Settings** → **MCP**
+2. Go to [**Settings → MCP**](https://mobbin.com/settings/mcp) (or click your profile icon top right → **Settings** → **MCP**)
 3. Select your tool and follow the instructions, or use one of these:
 
 > **Mobbin account & plan tiers**
