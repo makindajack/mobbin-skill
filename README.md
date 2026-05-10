@@ -182,6 +182,14 @@ https://api.mobbin.com/mcp
 - Powered by the [Mobbin MCP server](https://mobbin.com) and the [Model Context Protocol](https://modelcontextprotocol.io).
 - Contributions welcome — open an issue using the templates in `.github/ISSUE_TEMPLATE/`.
 
+## Disclaimer
+
+This is an independent, community-maintained skill. It is **not affiliated with, endorsed by, or sponsored by Mobbin Inc., Anthropic, GitHub, Cursor, or any of the other products mentioned**. Compatibility badges describe technical interoperability only.
+
+Mobbin is a trademark of Mobbin Inc. Claude Code is a trademark of Anthropic. VS Code and GitHub Copilot are trademarks of Microsoft / GitHub. Cursor is a trademark of Anysphere Inc. All other product names, logos, and brands are property of their respective owners and are used here for descriptive purposes only.
+
+App screenshots referenced in `examples/` and returned by the Mobbin MCP server are the property of their respective applications and are accessed via Mobbin's licensed API. This repository does not store or redistribute any third-party app screenshots.
+
 ## License
 
 MIT
