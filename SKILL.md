@@ -47,11 +47,41 @@ The user can always correct you in the next turn — that's cheaper than a block
 
 ## Workflow
 
+Pick the right depth for the user's question. Doing the full research workflow on a casual "show me…" question wastes time and tokens; doing a quick lookup on a "research…" question gives a shallow answer.
+
+### Mode A — Quick Lookup (single fast call)
+
+Use this when the user just wants to **see examples**, not a synthesis. Trigger phrases:
+
+- "show me…", "show some…", "find me…"
+- "examples of…", "what does X look like"
+- "any apps that do X?"
+- Single screen type, no comparison or framework requested
+
+Steps:
+
+1. Resolve platform (per Platform Resolution rules above).
+2. Write **one** concrete query covering the request.
+3. Call `search_screens` with `mode: "fast"` and `limit: 5–10`.
+4. Return a short comparison table: `App | Pattern | Notable detail | Mobbin link` — no pattern clusters, no recommendations section.
+5. End with a one-liner: _"Want me to do a deeper pattern analysis on these?"_
+
+### Mode B — Full Research (multi-batch synthesis)
+
+Use this when the user wants understanding, not just examples. Trigger phrases:
+
+- "research…", "analyze…", "what patterns…"
+- "compare…", "competitive audit…"
+- "what should I do for…", "help me design…"
+- "design system", "common components", "primitives"
+
+Steps:
+
 1. Understand the user's research goal.
 2. Resolve the target platform.
 3. Break the goal into concrete UI moments (specific screens a user would see).
-4. Generate 3-7 search queries using the query construction rules below.
-5. Run searches in batches of 2-3 and **analyze each batch immediately** — write down app names, URLs, and key observations as text before moving to the next batch. Screenshots are large and will be dropped from context if you accumulate too many before synthesizing.
+4. Generate 3–7 search queries using the query construction rules below.
+5. Run searches in batches of 2–3 and **analyze each batch immediately** — write down app names, URLs, and key observations as text before moving to the next batch. Screenshots are large and will be dropped from context if you accumulate too many before synthesizing.
 6. After all batches are analyzed, merge the per-batch notes into pattern clusters.
 7. Synthesize what the patterns mean for product design.
 8. Return actionable recommendations using the output format below.
@@ -59,6 +89,10 @@ The user can always correct you in the next turn — that's cheaper than a block
 For broad research, use `limit: 20-30`. For focused queries, `limit: 10-15` is sufficient. If the user wants more variety after an initial batch, pass prior result IDs via `exclude_screen_ids` to get fresh results.
 
 **Important: analyze incrementally.** Do not accumulate all search results before writing. Each batch of screenshots consumes significant context. Write your visual analysis (app names, URLs, layout observations, component notes) as text immediately after each batch returns. Text persists through context compaction; base64 images do not.
+
+### When the mode is unclear
+
+Default to **Mode A (Quick Lookup)**. It's cheaper, and the user can always ask for deeper analysis on the results. Only escalate to Mode B without asking when the trigger phrases above are clearly present.
 
 ## Query Construction
 
