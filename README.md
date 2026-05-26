@@ -41,7 +41,9 @@ This is a fork of [`ddruids/mobbin-skill`](https://github.com/ddruids/mobbin-ski
 - **Fallback rule** for weak results: auto-broaden → swap mode → honest report instead of padding output.
 - **Behavior anti-patterns** catalog ([`references/anti-patterns.md`](references/anti-patterns.md)).
 - **Pre-configured client files** for 7 tools — see [`clients/`](clients/).
-- **`validate.sh`** sanity check + `CONTRIBUTING.md` + GitHub issue templates + Mobbin-ToS responsible-use guidance.
+- **`validate.sh`** sanity check (with `--doctor` offline diagnostic) + `CONTRIBUTING.md` + `SECURITY.md` + GitHub issue templates + Mobbin-ToS responsible-use guidance.
+- **Docs split** — install, MCP setup, troubleshooting, compatibility, cost-and-context, and responsible-use each live in their own page under [`docs/`](docs/).
+- **CI** — `shellcheck` + `gitleaks` on `validate.sh` and the repo, plus `markdownlint` + `lychee` link-check on docs (push / PR / weekly).
 
 If you want the original skill as-is, install [`ddruids/mobbin-skill`](https://github.com/ddruids/mobbin-skill) instead.
 
